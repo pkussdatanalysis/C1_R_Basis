@@ -1,0 +1,188 @@
+- Class: meta
+  Course: R_Basis
+  Lesson: WorkSpace_and_File
+  Author: mzl
+  Type: Standard
+  Organization: pkuss
+  Version: 2.4.3
+
+- Class: text
+  Output: 在本节课中，您将学习如何检查R中的本地工作空间并开始了解你的工作空间和你机器文件系统之间的关系。
+
+- Class: text
+  Output: 因为不同的操作系统对于文件路径有不同的约定，这些命令在不同的机器上的输出可能会有不同。
+
+- Class: text
+  Output: 然而重要的是R提供了一个通用的API（一组通用的命令）与文件系统进行交互，这样你的代码就可以工作了跨越不同种类的电脑。
+
+- Class: text
+  Output: 让我们开始感受到这些特别的功能如何工作！
+  
+- Class: cmd_question
+  Output: 确定R会话正在使用哪个目录作为当前工作目录使用'getwd()'。
+  CorrectAnswer: getwd()
+  AnswerTests: omnitest(correctExpr='getwd()')
+  Hint: 输入'getwd()'来确定当前的工作目录
+
+- Class: cmd_question
+  Output: 使用'ls()'列出本地工作空间中的所有对象。
+  CorrectAnswer: ls()
+  AnswerTests: omnitest(correctExpr='ls()')
+  Hint: 输入'ls()'查看本地工作区中的所有对象
+
+- Class: text
+  Output: 一些R命令与Linux或Mac上的等效命令相同。 Linux和Mac操作系统都是基于操作系统的系统称为Unix。了解关于Unix的更多信息总是一个好主意！
+
+- Class: cmd_question
+  Output: 使用'x <- 9'将9分配给x。
+  CorrectAnswer: x<- 9
+  AnswerTests: omnitest(correctExpr='x<- 9')
+  Hint: 键入'x<- 9'将x分配给9
+
+- Class: cmd_question
+  Output: 现在使用'ls()'来查看工作区中的对象
+  CorrectAnswer: ls()
+  AnswerTests: omnitest(correctExpr='ls()')
+  Hint: 输入'ls()'查看工作区中的所有对象。
+
+- Class: cmd_question
+  Output: 使用'list.files()'或者'dir()'列出工作目录中的所有文件DIR。
+  CorrectAnswer: list.files()
+  AnswerTests: any_of_exprs("list.files()","DIR()")
+  Hint: 输入'list.files()'到工作目录中的所有文件。
+
+- Class: cmd_question
+  Output: 在我们阅读本课时，您应该正在查看每个新的功能帮助文档。使用命令'?list.files'查看list.files的帮助页面。
+  CorrectAnswer: ?list.files
+  AnswerTests: any_of_exprs('?list.files', '?dir', 'help("list.files")', 'help("dir")')
+  Hint: 键入'?list.files'以查看帮助页面。
+
+- Class: text
+  Output: 任何R帮助文件最有帮助的部分之一是另请参阅部分。阅读的'list.files()'的另请参阅部分。其中一些功能可能是在
+    本课的后面部分中使用。
+
+- Class: text
+  Output: 在函数名上使用'args()'函数也是一个方便的方法，看看函数可以采用什么参数。
+
+- Class: cmd_question
+  Output: 使用'args()'函数来确定'list.files()'的参数。
+  CorrectAnswer: args(list.files)
+  AnswerTests: omnitest(correctExpr='args(list.files)')
+  Hint: 键入'args(list.files)'以查看list.files的参数。 
+
+- Class: cmd_question
+  Output: 将当前工作目录的值分配给一个称为“old.dir”的变量。
+  CorrectAnswer: old.dir <- getwd()
+  AnswerTests: omnitest(correctExpr='old.dir <- getwd()')
+  Hint: 键入'old.dir <- getwd()'以分配当前工作的值目录到一个名为“old.dir”的变量。
+
+- Class: text
+  Output: 我们将在本课结束时使用old.dir移回到我们开始的地方。很多像getwd（）这样的查询函数都有很实用的特性，他们作为函数的结果返回了问题的答案。
+
+- Class: cmd_question
+  Output: 使用'dir.create()'在当前工作中创建一个名为“testdir”的目录。
+  CorrectAnswer: dir.create("testdir")
+  AnswerTests: omnitest(correctExpr='dir.create("testdir")')
+  Hint: 键入'dir.create("testdir")'在当前工作中创建一个目录名为“testdir”的目录
+
+- Class: text
+  Output: 我们将在这个新目录中完成所有的工作，然后删除它我们完了。这是R的模仿了 "Take only pictures, leave only footprints." 
+
+- Class: cmd_question
+  Output: 使用'setwd()'命令将工作目录设置为“testdir”。
+  CorrectAnswer: serwd("testdir")
+  AnswerTests: any_of_exprs('setwd("testdir")', 'setwd("testdir/")')
+  Hint: 使用'setwd("testdir")'将您的工作目录设置为“testdir”。
+
+- Class: text
+  Output: 一般来说，你会希望你的工作目录在某个地方，或许是为你正在从事的具体项目而创建的。事实上，使用RStudio来组织你的R包的工作是非常好的选项。在http://www.rstudio.com/上查看RStudio“
+
+- Class: cmd_question
+  Output: 在你的工作目录下创建一个名为“mytest.R”的文件,使用'file.create()'命令
+  CorrectAnswer: file.create("mytest.R")
+  AnswerTests: omnitest(correctExpr='file.create("mytest.R")')
+  Hint: file.create("mytest.R")将完成工作！
+
+- Class: cmd_question
+  Output: 通过列出当前目录中的所有文件来检查是否存在这个文件。'mytest.R'应该是这个新创建的目录中唯一的文件。
+  CorrectAnswer: list.files()
+  AnswerTests: any_of_exprs('list.files()', 'dir()')
+  Hint: list.files() 显示该目录仅仅包含mytest.R.
+
+- Class: cmd_question
+  Output: 使用'file.exists()'检查工作目录中是否存在“mytest.R”
+  CorrectAnswer: file.exists("mytest.R")
+  AnswerTests: omnitest(correctExpr='file.exists("mytest.R")')
+  Hint: 使用file.exists("mytest.R"")来检查文件是否存在。
+
+- Class: text
+  Output: 这些功能对于交互式使用来说是过度的。但是，如果你正在运行一个程序，通过一系列的文件循环，并做一些处理每一个，再尝试处理它之前，你会想检查看看每一个存在。
+    
+
+- Class: cmd_question
+  Output: 通过使用'file.info()'来访问关于文件“mytest.R”的信息。
+  CorrectAnswer: file.info("mytest.R")
+  AnswerTests: omnitest(correctExpr='file.info("mytest.R")')
+  Hint: 使用'file.info("mytest.R")'
+
+- Class: text
+  Output: 您可以使用$运算符，例如'file.info("mytest.R")$ mode' 去获取文件特定的信息。
+
+- Class: cmd_question
+  Output: 通过使用'file.rename()'，将文件“mytest.R”的名称更改为“mytest2.R”
+  CorrectAnswer: file.rename("mytest.R", "mytest2.R")
+  AnswerTests: any_of_exprs('file.rename("mytest.R", "mytest2.R")', 'file.rename(from = "mytest.R", to = "mytest2.R")')
+  Hint: file.rename("mytest.R", "mytest2.R") 是正确的方式.
+
+- Class: text
+  Output: 您的操作系统为在这些操作提供更简单的工具的任务，但通过以编程方式操作文件是非常有用的。您现在可以尝试使用删除file.remove（'mytest.R'），但这不会起作用，因为mytest.R不再存在。你已经改名了。
+
+- Class: cmd_question
+  Output: 使用file.copy()备份一份"mytest2.R"的拷贝，叫做"mytest3.R"。
+  CorrectAnswer: file.copy("mytest2.R", "mytest3.R")
+  AnswerTests: any_of_exprs('file.copy("mytest2.R", "mytest3.R")', 'file.copy(from = "mytest2.R", to = "mytest3.R")')
+  Hint: file.copy("mytest2.R", "mytest3.R")将会将会发挥作用
+
+- Class: text
+  Output: 您现在在当前目录中有两个文件。这可能不是很有意思。但是，如果你正在使用数十个甚至数百万个单独的文件,在这种情况下，能够以编程方式进行操作许多文件将是绝对必要的。不要忘记，你可以，暂时通过键入play（）然后离开课程键入nxt（）返回。
+
+- Class: cmd_question
+  Output: 使用'file.path()'查询mytest3.R的相对路径
+  CorrectAnswer: file.path("mytest3.R")
+  AnswerTests: omnitest(correctExpr='file.path("mytest3.R")')
+  Hint: 试试'file.path("mytest3.R")'吧！
+
+- Class: cmd_question
+  Output: “您可以使用file.path来构建独立于R代码运行的操作系统文件和目录路径。通过'folder1'和'folder2'作为file.path的参数来创建一个独立于平台的路径名。“
+  CorrectAnswer: file.path("folder1", "folder2")
+  AnswerTests: omnitest(correctExpr='file.path("folder1", "folder2")')
+  Hint: 使用file.path("folder1", "folder2")
+
+- Class: cmd_question
+  Output: 通过输入'?dir.create'来查看'dir.create'的文档。注意参数"recursive"。为了创建嵌套目录，"recursive"必须设置为TRUE。
+  CorrectAnswer: ?dir.create
+  AnswerTests: omnitest(correctExpr='?dir.create')
+  Hint: 输入?dir.create 将会为你展示说明文档.
+
+- Class: cmd_question
+  Output: 在当前工作目录中创建一个名为“testdir2”及其子目录“testdir3”，通过使用dir.create()和file.path()在一条命令中完成。
+  CorrectAnswer: dir.create(file.path("testdir2", "testdir3"), recursive = TRUE)
+  AnswerTests: omnitest(correctExpr='dir.create(file.path("testdir2", "testdir3"), recursive = TRUE)')
+  Hint: dir.create(file.path('testdir2'，'testdir3')，recursive = TRUE)'会实现这个功能。如果您忘记递归参数，则可能有该命令似乎工作，但它没有创建嵌套的目录。
+
+- Class: cmd_question
+  Output: 使用'setwd()'返回到您的原始工作目录。 （回想一下，在这些问题的开始，我们用原始工作目录的完整路径创建变量old.dir。）
+  CorrectAnswer: setwd(old.dir)
+  AnswerTests: omnitest(correctExpr='setwd(old.dir)')
+  Hint: 使用 setwd(old.dir).
+
+- Class: text
+  Output: 开始分析之前，保存你的设置通常是有帮助的，然后最后回到开始的设置。这招是经常在函数中使用;比如说，你从一开始保存了'par()'的设置,然后进行了很多操作变得混乱，但是在最后仍可以放回去原来的值。这与我们在这里所做的不一样，但思想却是一致的。
+
+- Class: text
+  Output: 完成本课程后，删除'testdir'目录
+- Class: text
+  Output: 除了结果之外什么都不要做，除了假设什么都不要。这听起来像“除了照片什么都不要。除了脚印什么都不要留下“。
+
+- Class: text
+  Output: 在本课中，您学习了如何检查R工作空间和使用R与您的机器的文件系统一起工作。感谢您的参与！

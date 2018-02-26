@@ -1,0 +1,119 @@
+- Class: meta
+  Course: R_basis
+  Lesson: R introduction
+  Author: mzl
+  Type: Standard
+  Organization: pkuss
+  Version: 2.4.3
+- Class: text
+  Output: 本节课是R语言的基本入门部分
+- Class: text
+  Output: 先说明一下文件里一些符号的含义。所有的代码都用单引号（''）包裹。例如，当swirl提示输入的信息如下：'sessioninfo()'，即要求各位同学在console命令行里输入的内容如下：sessioninfo()。
+- Class: text
+  Output: 那我们就开始吧！
+- Class: text
+  Output: 在R中我们可以随时获得某一个包或者函数的使用说明。举例来说，我们要获得'mean'这个函数的说明，我们就可以使用：'help(mean)'。另外一种比较简单的方式就是'?mean'。此时在浏览器或者是RStudio里会出现mean帮助文档
+- Class: cmd_question
+  Output: 请尝试查询'mean'函数的说明
+  CorrectAnswer: help(mean)
+  AnswerTests: any_of_exprs("help(mean)","?mean")
+  Hint: 记得前面提到的'help()'和'?'
+- Class: text
+  Output: 在R中,每一段指令都是一个expression。例如，刚刚输入的'help(mean)'是一个有效的表达式。
+- Class: text
+  Output: 通常R的指令分为两种，一种是expression,一种是assignment.
+- Class: cmd_question
+  Output: 举例来说，'a<-1'是一个assignment(赋值)的动作。请在console输入'a<-1'
+  CorrectAnswer: a<-1
+  AnswerTests: omnitest("a<-1", 1)
+  Hint: a<-1
+- Class: text
+  Output: R 在收到一个表达式时，会做如下的动作：
+- Class: cmd_question
+  Output: R会evaluate这个表达式，并输出表达式的结果。请同学们输入'a+1'
+  CorrectAnswer: a+1
+  AnswerTests: omnitest("a+1", 2)
+  Hint: a+1
+- Class: text
+  Output: 在收到a+1这个表达式时，R会进行计算。首先找到a的值为1,然后和1相加，最后显示结果为2
+- Class: cmd_question
+  Output: 现在请将a的值设为2
+  CorrectAnswer: a<-2
+  AnswerTests: any_of_exprs("a<-2","a=2")
+  Hint: a<-2
+- Class: text
+  Output: 同学们是否注意到，屏幕上并没有显示结果呢。
+- Class: mult_question
+  Output: 测试一下同学们是否理解了assgnment的意思，如果在命令行中输入'a-1',会显示什么结果呢?
+  AnswerChoices: 1;2;4;"不显示"
+  CorrectAnswer: 1
+  AnswerTests: omnitest(correctVal= '1')
+  Hint: 想一想'a-1'是个什么语句，再想想a的值
+- Class: text
+  Output: 相信大家已经理解了expression和assignment，未来我们将会利用大量的expression和assignment来完成复杂的任务
+- Class: text
+  Output: 我们可以将都多个expression用{}包裹起来，形成一个代码块
+- Class: text
+  Output: 我们也可以在R代码中使用"#"加入注解。所有"#"之后的内容都会被R忽略掉。
+- Class: text
+  Output: 如果有一个expression没有完成，例如，少了")"或者"}"，那R会在console开头用"+"进行提示
+
+- Class: text
+  Output: 可以用上下键快速浏览历史输入过的指令。
+- Class: text
+  Output: 要把指令输入到R,除了在R console一个字一个字的输入之外，还可以通过source()指令带入以.R结尾的R脚本文件，R会执行脚本文件里的R表达式。
+- Class: cmd_question
+  Output: 请看一下`source`的帮助文档。使用R 命令行界面的的同学会看到跳出的浏览器窗口，而使用RStudio的同学则会在右下角出现source()的说明文档。
+  CorrectAnswer: help(soure)
+  AnswerTests: any_of_exprs("help(source)","?source")
+  Hint: help(source)
+- Class: text
+  Output: 前面跟各位同学介绍过赋值指令（assignment），在R里存放这些内容的东西叫做对象（Object），如上述例子中的'a'，object可以是一个变量、一串数字、文字，甚至是函数或更复杂的结构。
+- Class: cmd_question
+  Output: 在R 中，我们可以利用'objects()'或'ls()'来列出所有目前存在的object的名字。请输入'objects()'或'ls()'。
+  CorrectAnswer: objects()
+  AnswerTests: any_of_exprs("objects()","ls()")
+  Hint: objects()
+- Class: cmd_question
+  Output: 我们可以刪除已经存在的对象。例如，刪除'a'，就只要输入：'rm(a)'。请同学根据上述做法试试看。
+  CorrectAnswer: rm(a)
+  AnswerTests: omnitest('rm(a)')
+  Hint: rm(a)
+- Class: text
+  Output: R中可以用print函数来输出
+  
+- Class: cmd_question
+  Output: 打印"Hello World"
+  CorrectAnswer: print("Hello World")
+  AnswerTests: omnitest(correctExpr='print("Hello World")')
+  Hint: print("Hello World")
+  
+- Class: text
+  Output: print函数里的digits参数可以控制输出结果的位数
+  
+- Class: cmd_question
+  Output: 输出pi值，小数点后3位。R语言中pi是一个预定义的值
+  CorrectAnswer: print(pi,digits=4)
+  AnswerTests: omnitest(correctExpr='print(pi,digits=4)')
+  Hint: print(pi,digits=4)
+  
+- Class: text
+  Output: cat函数也可以用作输出，但不能直接控制数据的输出格式，不过在调用cat函数前可以使用format函数先设定数据的格式。format设置输出位数：format(x,digits)
+  
+- Class: cmd_question
+  Output: 使用cat函数输出pi值，小数点以后3位，并换行
+  CorrectAnswer: cat(format(pi,digits=4),"\n")
+  AnswerTests: omnitest(correctExpr='cat(format(pi,digits=4),"\n")')
+  Hint: cat(format(pi,digits=4),"\n")
+  
+- Class: text
+  Output: 使用cat函数的file参数可以对输出结果进行重定向
+  
+- Class: cmd_question
+  Output: 输出"Hello World"到你工作目录下的"hello.txt文件中去"
+  CorrectAnswer: cat("Hello World",file="hello.txt")
+  AnswerTests: omnitest(correctExpr='cat("Hello World",file="hello.txt")')
+  Hint: cat("Hello World",file="hello.txt")
+  
+- Class: text
+  Output: 本节课到此结束

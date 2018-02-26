@@ -1,0 +1,140 @@
+- Class: meta
+  Course: R_Basis
+  Lesson: Basic_Building_Block
+  Author: mzl
+  Type: Standard
+  Organization: pkuss
+  Version: 2.4.3
+  
+- Class: text
+  Output: 在本课中，我们将探索一下构造R程序的一些基本的组成部分和R中的算数运算符。
+
+- Class: text
+  Output: 如果您想了解更多有关R的特定主题的信息，可以在提示符下键入help.start（），这将打开一个资源菜单
+   （在RStudio或默认Web浏览器中，取决于您的 设置）。 或者，一个简单的网页搜索通常会得到你正在寻找的答案。
+
+- Class: cmd_question
+  Output: R最简单的形式是可以用作交互式计算器。 键入5 + 7并按Enter键。
+  CorrectAnswer: 5 + 7
+  AnswerTests: omnitest(correctExpr='5 + 7')
+  Hint: 输入5 + 7并按Enter键 
+
+- Class: text
+  Output: 默认打印12的结果。 然而，R是一种编程语言，通常是我们使用编程语言而不是计算器的原因是
+    自动化一些过程或避免不必要的重复。
+
+- Class: text
+  Output: 在这种情况下，我们可能希望在第二次计算中使用上面的结果。而不是每次我们需要重新输入5 + 7时，
+    我们可以创建一个新的变量来存储结果。
+
+- Class: text
+  Output: 在R中赋值给变量的方法是使用赋值运算符，它只是一个"小于(<)"的符号，后面跟着一个"减号(-)"符号。 
+    它看起来像这样：'<-'
+
+- Class: text
+  Output: 将分配运算符看作是一个箭头。 您正在将箭头右侧的值分配给箭头左侧的变量名称。
+
+- Class: cmd_question
+  Output: 要将5 + 7的结果分配给一个名为x的新变量，请键入x < - 5 + 7.这可以理解为'x gets 5 plus 7'。 现在试试吧。
+  CorrectAnswer: x <- 5 + 7
+  AnswerTests: any_of_exprs('x <- 5 + 7', 'x <- 7 + 5')
+  Hint: 输入x < - 5 + 7.在赋值运算符的每一边包含一个空格是很重要的，但不要在形成箭头的'<'和'-'之间放一个空格。
+
+- Class: text
+  Output: 你会注意到R这次没有打印出12的结果。 当你使用赋值运算符时，R假定你不想立即看到结果，而是打算将结果用于
+    以后的其他事情。
+
+- Class: cmd_question
+  Output: 要查看变量x的内容，只需键入x并按Enter键。 现在就试试。
+  CorrectAnswer: x
+  AnswerTests: omnitest(correctExpr='x',correctVal=12)
+  Hint: 键入x并按Enter键,这将自动打印x的值。
+
+- Class: cmd_question
+  Output: 现在，将'x - 3'的结果存储在一个名为y的新变量中。
+  CorrectAnswer: y <- x - 3
+  AnswerTests: omnitest(correctExpr='y <- x - 3')
+  Hint: 键入y < - x - 3，然后按Enter键。 无论你使用x - 3还是x-3都是个人偏好，但是在赋值运算符的任一侧包含一个空格是个好习惯。
+
+- Class: cmd_question
+  Output: y的值是什么？ 键入y查找
+  CorrectAnswer: y
+  AnswerTests: omnitest(correctExpr='y', correctVal=9)
+  Hint: 输入y 并按回车键
+
+
+- Class: text
+  Output: 正如开始时说的，使用最简单的R语句，R可以被当作一个简单的计算器来使用。考虑一下我们常见的运算，除了前边已经使用过的'+'、'-',
+    我们可能还会使用乘(*)、除(/)、乘方(^)、取余(%%)运算。
+- Class: cmd_question
+  Output: 计算 3 + 4
+  CorrectAnswer: 3 + 4
+  AnswerTests: omnitest(correctExpr='3 + 4')
+  Hint: 3 + 4
+
+- Class: cmd_question
+  Output: 在命令行中输入2 ^ 5来计算2的5次方
+  CorrectAnswer: 2 ^ 5
+  AnswerTests: omnitest(correctExpr='2 ^ 5')
+  Hint: 2 ^ 5
+
+- Class: cmd_question
+  Output: 计算28模6
+  CorrectAnswer: 28 %% 6
+  AnswerTests: omnitest(correctExpr='28 %% 6')
+  Hint: 28 %% 6
+
+- Class: cmd_question
+  Output: 将值42分配给变量x
+  CorrectAnswer: x <- 42
+  AnswerTests: omnitest(correctExpr='x <- 42')
+  Hint: x <- 42
+
+- Class: cmd_question
+  Output: 打印x的值
+  CorrectAnswer: x
+  AnswerTests: omnitest(correctExpr='x')
+  Hint: x
+
+- Class: cmd_question
+  Output: 分配给y值6
+  CorrectAnswer: y <- 6
+  AnswerTests: omnitest(correctExpr='y <- 6')
+  Hint: y <- 6
+
+- Class: cmd_question
+  Output: 将x和y的和添加到新变量s中
+  CorrectAnswer: s <- x + y
+  AnswerTests: omnitest(correctExpr='s <- x + y')
+  Hint: s <- x + y
+
+- Class: cmd_question
+  Output: 创建my_numeric变量值为42
+  CorrectAnswer: my_numeric <- 42
+  AnswerTests: omnitest(correctExpr='my_numeric <- 42')
+  Hint: my_numeric <- 42
+
+- Class: cmd_question
+  Output: 创建my_character变量为“universe”。 请注意，引号表示“universe”是一个字符
+  CorrectAnswer: my_character <- "universe"
+  AnswerTests: omnitest(correctExpr='my_character <- "universe"')
+  Hint: my_character <- "universe"
+
+- Class: cmd_question
+  Output: 创建my_logical变量为FALSE
+  CorrectAnswer: my_logical <- FALSE
+  AnswerTests: omnitest(correctExpr='my_logical <- FALSE')
+  Hint: my_logical <- FALSE
+  
+- Class: cmd_question
+  Output: ^运算求其左边数字的幂，指数是其右边的数字，例如:3^2 是 9.在命令提示符处输入 2^5 去计算2的5次方.
+  CorrectAnswer: 2^5
+  AnswerTests: omnitest(correctExpr='2^5', correctVal=32)
+  Hint: 2^5
+  
+- Class: cmd_question
+  Output: 取模运算符'%%'返回其左边的数字被邮编数字除的余数。例如5 取余 3 或者 5 %% 3 的结果是2.
+    在命令行输入 29 %% 6去计算28 取余6的结果.
+  CorrectAnswer: 29 %% 6
+  AnswerTests: omnitest(correctExpr='29 %% 6', correctVal=5)
+  Hint: 29 %% 6
